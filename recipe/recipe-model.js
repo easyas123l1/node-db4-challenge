@@ -20,4 +20,6 @@ function getShoppingList(id) {
 }
 
 // should return a list of step by step instructions for preparing a recipe
-function getInstructions(id) {}
+function getInstructions(id) {
+  return db("instructions").where("recipe_id", "=", id);
+}
