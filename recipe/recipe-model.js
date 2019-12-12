@@ -12,7 +12,12 @@ function getRecipes() {
 }
 
 // should return a list of all ingredients and quantities for a given recipe
-function getShoppingList(id) {}
+function getShoppingList(id) {
+  return db("recipe_ingredients")
+    .select("ingredients.name", "recipe_ingredients.quantity")
+    .join("ingredients", "recipe_ingredients.ingredient_id", "ingredients.id")
+    .where("recipe_id", "=", id);
+}
 
 // should return a list of step by step instructions for preparing a recipe
 function getInstructions(id) {}
